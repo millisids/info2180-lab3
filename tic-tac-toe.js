@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded',() => {
     cells.forEach((cell,index) => {
         cell.addEventListener('click',() => {
 
-        if(gameOv)return;
+        if(gameOv || gamestate[index])return;
 
         if(cell.textContent===''){
             cell.textContent = c_player;
