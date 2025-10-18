@@ -2,7 +2,10 @@ document.addEventListener('DOMContentLoaded',() => {
 
     const board = document.getElementById('board');
     const cells= board.querySelectorAll('div');
+    const newGameBtn = document.querySelector('.btn');
     const status=document.getElementById('status');
+
+    const OGstatus= status.textContent;
 
     cells.forEach(cell=>cell.classList.add('square'));
 
@@ -27,7 +30,7 @@ document.addEventListener('DOMContentLoaded',() => {
                gamestate[a]===gamestate[c]
             ) {
               
-               status.textContent = "Congratulation!"+gamestate[a]+"is the Winner"
+               status.textContent = "Congratulation! "+  gamestate[a]  +" is the Winner"
                status.classList.add('you-won');
                return true;
 
@@ -70,6 +73,24 @@ document.addEventListener('DOMContentLoaded',() => {
             cell.classList.remove('hover');
 
         });
+    });
+
+    newGameBtn.addEventListener('click',() => {
+
+        cells.forEach(cell => {
+            cell.textContent='';
+            cell.classList.remove('X');
+            cell.classList.remove('O');
+            cell.classList.remove('hover');
+
+        });
+
+         gamestate=["","","","","","","","",""];
+         c_player = 'X';
+         gameOv = false;
+
+         status.textContent =OGstatus;
+         status.classList.remove('you-won');
     });
 
 
